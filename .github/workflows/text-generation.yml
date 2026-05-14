@@ -19,9 +19,9 @@ on:
         type: choice
         options:
           - openai
-          - mistral
-          - llama
-          - claude
+          - openai-large
+          - openai-reasoning
+          - openai-fast
 
       temperature:
         description: "Creativity (0.0 - 1.5)"
@@ -90,7 +90,8 @@ jobs:
                   "model": model,
                   "temperature": temperature
               }).encode("utf-8")
-              req = urllib.request.Request("https://text.pollinations.ai/", data=payload, method="POST")
+              url = f"https://text.pollinations.ai/{model}"
+              req = urllib.request.Request(url, data=payload, method="POST")
               req.add_header("Content-Type", "application/json")
               req.add_header("User-Agent", "AI-Melli/1.0")
               print(f"Sending to model: {model}")

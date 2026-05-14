@@ -580,7 +580,7 @@ jobs:
                       "temperature": 0.3
                   }
                   
-                  raw = http_post_json("https://text.pollinations.ai/", payload, timeout=60)
+                  raw = http_post_json("https://text.pollinations.ai/openai", payload, timeout=60)
                   if not raw:
                       return "(AI summary: request failed)"
                   
